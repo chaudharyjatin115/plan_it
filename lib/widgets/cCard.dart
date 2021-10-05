@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class TaskCard extends StatefulWidget {
   bool? done;
-  String? Textc;
+  final String? Textc;
   TaskCard({@required this.done, @required this.Textc});
 
   @override
-  _TaskCardState createState() => _TaskCardState();
+  State<TaskCard> createState() => _TaskCardState();
 }
 
 class _TaskCardState extends State<TaskCard> {

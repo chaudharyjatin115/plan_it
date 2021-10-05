@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plan_it/screens/addTaskscreen.dart';
+
 import 'package:plan_it/widgets/cCard.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -16,7 +16,16 @@ class _TaskScreenState extends State<TaskScreen> {
       floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Color(0xff50e3a4),
           onPressed: () {
-            showModalBottomSheet(context: context, builder: )
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  child: Column(
+                    children: [],
+                  ),
+                );
+              },
+            );
           },
           label: Icon(Icons.add)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
