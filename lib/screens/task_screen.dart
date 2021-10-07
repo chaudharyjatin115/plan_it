@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:plan_it/widgets/cCard.dart';
+import 'package:plan_it/models/dbhelper.dart';
 
 class TaskScreen extends StatefulWidget {
-  final bool? isDone = false;
+  
 
   @override
   _TaskScreenState createState() => _TaskScreenState();
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  
+
+  getTasks()async{
+    final tasks = await DbHelper().getTask();
+    print(tasks);
+    return tasks;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +28,9 @@ class _TaskScreenState extends State<TaskScreen> {
               builder: (BuildContext context) {
                 return Container(
                   child: Column(
-                    children: [],
+                    children: [
+                      
+                    ],
                   ),
                 );
               },
@@ -79,17 +88,11 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 20.0,
                 ),
                 Expanded(
-                  child: Container(
-                    child: ListView(
-                      children: <Widget>[
-                        TaskCard(done: false, Textc: 'Get Some Groceries'),
-                        TaskCard(done: true, Textc: 'Buy Some Clothes'),
-                        TaskCard(done: false, Textc: 'Collect some Documents'),
-                        TaskCard(done: false, Textc: 'Change some cash'),
-                      ],
-                    ),
-                  ),
-                ),
+                    child: FutureBuilder(
+                  future: getTasks(),
+                  builder:()
+                     
+                )),
               ],
             ),
           ),

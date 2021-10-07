@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TaskCard extends StatefulWidget {
-  bool? done;
-  final String? Textc;
+   bool? done;
+  String? Textc;
   TaskCard({@required this.done, @required this.Textc});
 
   @override
@@ -30,9 +30,7 @@ class _TaskCardState extends State<TaskCard> {
                   checkColor: Color(0xff50e3a4),
                   value: widget.done,
                   shape: CircleBorder(),
-                  onChanged: (bool? newValue) {
-                    widget.done = newValue;
-                  },
+                  onChanged: 
                 ),
               ),
             ),
