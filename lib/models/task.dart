@@ -1,20 +1,19 @@
 class Task {
   final int? id;
-  final String? title;
+  final String? name;
+  final DateTime? date;
 
-  Task(
-    this.id,
-    this.title,
-  );
-
+  Task(this.id, this.date, this.name);
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'title': title,
+      'name': name,
+      'date': date,
     };
   }
 
   Task.fromMap(Map<String, dynamic> res)
       : id = res["id"],
-        title = res["title"];
+        name = res["title"],
+        date = res["date"];
 }

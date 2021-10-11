@@ -1,50 +1,44 @@
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
+
 import 'package:sqflite/sqflite.dart';
 
 import 'task.dart';
 
-class DbHelper {
-  DbHelper();
-  static final DbHelper dataBase = DbHelper();
-  static Database? _database;
-
-  Future<Database?> get database async {
-    // ignore: unnecessary_null_comparison
-    if (database != null) {
-      return _database;
-    }
-    _database = await initDatabase();
-    return _database;
-  }
-
-  initDatabase() async {
-    return await openDatabase(join(await getDatabasesPath(), 'todo_app_db'),
-        onCreate: (db, version) async {
-      await db.execute(
-          '''CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT,task TEXT NOT NULL)''');
+class DBHelper {
+  Future main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    final database =
+        await openDatabase(join(await getDatabasesPath(), 'task_database.db'),
+            onCreate: (db, version) {
+      return db.execute(
+        'CREATE TABLE tasks(id INTEGER PRIMARY KEY,name TEXT,date INTEGER)',
+      );
     }, version: 1);
+    return database;
   }
 
-  addNewTask(Task newTask) async {
-    final db = await initDatabase();
-
-    db!.insert("tasks", newTask.toMap(),
+  Future<void> insertTask(Task task) async {
+    final db = await main();
+    await db.insert('tasks', task.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<void> deleteTask(int id) async {
-    final db = await initDatabase();
-    await db.delete('tasks', where: "id=?", whereArgs: [id]);
+  Future<List<Task>> getTasks() async {
+    final db = await main();
+    final List<Map<String, dynamic>> maps = await db.query('tasks');
+    return List.generate(
+        maps.length,
+        (index) =>
+            Task(maps[index]['id'], maps[index]['date'], maps[index]['name']));
   }
 
-  Future<dynamic> getTask() async {
-    final db = await database;
-    var res = await db!.query("tasks");
-    if (res.length == 0) {
-      return null;
-    } else {
-      var resultMap = res.toList();
-      return resultMap.isNotEmpty ? resultMap : Null;
-    }
+  Future<void> deleteTask(int id) async {
+    final db = await main();
+    await db.delete(
+      'tasks',
+      where: 'id=?',
+      whereArgs: [id],
+    );
   }
 }

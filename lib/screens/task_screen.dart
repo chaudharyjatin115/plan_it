@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 import 'package:plan_it/models/dbhelper.dart';
+import 'package:plan_it/models/task.dart';
 
 class TaskScreen extends StatefulWidget {
-  
-
   @override
   _TaskScreenState createState() => _TaskScreenState();
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  
-
-  getTasks()async{
-    final tasks = await DbHelper().getTask();
-    print(tasks);
-    return tasks;
+  @override
+  void initState() {
+    super.initState();
+    DBHelper().main();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +26,7 @@ class _TaskScreenState extends State<TaskScreen> {
               builder: (BuildContext context) {
                 return Container(
                   child: Column(
-                    children: [
-                      
-                    ],
+                    children: [TextField()],
                   ),
                 );
               },
@@ -88,11 +84,38 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 20.0,
                 ),
                 Expanded(
-                    child: FutureBuilder(
-                  future: getTasks(),
-                  builder:()
-                     
-                )),
+                  child: FutureBuilder(
+                    future: DBHelper().getTasks(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data?.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      '${snapshot.data![index].name}',
+                                      style: TextStyle(fontSize: 20.0),
+                                    ),
+                                    Spacer(flex: 1),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ),
