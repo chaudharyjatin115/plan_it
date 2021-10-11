@@ -26,7 +26,11 @@ class _TaskScreenState extends State<TaskScreen> {
               builder: (BuildContext context) {
                 return Container(
                   child: Column(
-                    children: [TextField()],
+                    children: [
+                      TextField(
+                        onTap: () {},
+                      )
+                    ],
                   ),
                 );
               },
@@ -95,16 +99,31 @@ class _TaskScreenState extends State<TaskScreen> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Container(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      '${snapshot.data![index].name}',
-                                      style: TextStyle(fontSize: 20.0),
+                                  child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                        top: 25.0, bottom: 25.0, left: 8.0),
+                                    child: Expanded(
+                                      child: Text(
+                                        '${snapshot.data[index].name}',
+                                        style: TextStyle(fontSize: 16.0),
+                                      ),
                                     ),
-                                    Spacer(flex: 1),
-                                  ],
-                                ),
-                              ),
+                                  ),
+                                  Spacer(
+                                    flex: 3,
+                                  ),
+                                  Checkbox(
+                                    value: false,
+                                    onChanged: (bool? newValue) {
+                                      del(newValue!, snapshot.data[index].id);
+                                    },
+                                  ),
+                                ],
+                              )),
                             );
                           },
                         );
@@ -122,5 +141,11 @@ class _TaskScreenState extends State<TaskScreen> {
         ),
       ),
     );
+  }
+}
+
+void del(bool done, int id) {
+  if (done = true) {
+    DBHelper().deleteTask(id);
   }
 }

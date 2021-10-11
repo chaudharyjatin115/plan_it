@@ -29,8 +29,11 @@ class DBHelper {
     final List<Map<String, dynamic>> maps = await db.query('tasks');
     return List.generate(
         maps.length,
-        (index) =>
-            Task(maps[index]['id'], maps[index]['date'], maps[index]['name']));
+        (index) => Task(
+              id: maps[index]['id'],
+              date: maps[index]['date'],
+              name: maps[index]['name'],
+            ));
   }
 
   Future<void> deleteTask(int id) async {
