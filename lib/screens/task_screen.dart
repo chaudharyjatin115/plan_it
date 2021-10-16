@@ -8,6 +8,8 @@ class TaskScreen extends StatefulWidget {
   _TaskScreenState createState() => _TaskScreenState();
 }
 
+final textcontroller = TextEditingController();
+
 class _TaskScreenState extends State<TaskScreen> {
   @override
   void initState() {
@@ -15,6 +17,7 @@ class _TaskScreenState extends State<TaskScreen> {
     DBHelper().main();
   }
 
+  String? value;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +31,19 @@ class _TaskScreenState extends State<TaskScreen> {
                   child: Column(
                     children: [
                       TextField(
-                        onTap: () {},
-                      )
+                        controller: textcontroller,
+                        autofocus: true,
+                        textAlign: TextAlign.center,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            DBHelper().insertTask(Task(
+                              name: textcontroller.text,
+                            ));
+                          },
+                          child: Container(
+                            child: Text('Add Task'),
+                          ))
                     ],
                   ),
                 );
