@@ -15,6 +15,7 @@ class _TaskScreenState extends State<TaskScreen> {
   void initState() {
     super.initState();
     DBHelper().main();
+    // DBHelper().main();
   }
 
   String? value;
