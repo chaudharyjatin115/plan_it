@@ -18,7 +18,8 @@ class _TaskScreenState extends State<TaskScreen> {
     // DBHelper().main();
   }
 
-  String? value;
+  bool value = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +39,11 @@ class _TaskScreenState extends State<TaskScreen> {
                       ),
                       TextButton(
                           onPressed: () {
-                            DBHelper().insertTask(Task(
-                              name: textcontroller.text,
-                            ));
+                            setState(() {
+                              DBHelper().insertTask(Task(
+                                name: textcontroller.text,
+                              ));
+                            });
                           },
                           child: Container(
                             child: Text('Add Task'),
@@ -104,41 +107,50 @@ class _TaskScreenState extends State<TaskScreen> {
                 ),
                 Expanded(
                   child: FutureBuilder(
-                    future: DBHelper().getTasks(),
+                    future: DBHelper().getTask(),
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
-                          itemCount: snapshot.data?.length,
+                          itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding: const EdgeInsets.only(left: 15.0),
-                              child: Container(
-                                  child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        top: 25.0, bottom: 25.0, left: 8.0),
-                                    child: Expanded(
-                                      child: Text(
-                                        '${snapshot.data[index].name}',
-                                        style: TextStyle(fontSize: 16.0),
+                              child: GestureDetector(
+                                onLongPress: () {
+                                  setState(() {
+                                    del(snapshot.data[index].id);
+                                  });
+                                },
+                                child: Container(
+                                    child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                          top: 25.0, bottom: 25.0, left: 8.0),
+                                      child: Expanded(
+                                        child: Text(
+                                          '${snapshot.data[index].name}',
+                                          style: TextStyle(fontSize: 16.0),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Spacer(
-                                    flex: 3,
-                                  ),
-                                  Checkbox(
-                                    value: false,
-                                    onChanged: (bool? newValue) {
-                                      del(newValue!, snapshot.data[index].id);
-                                    },
-                                  ),
-                                ],
-                              )),
+                                    Spacer(
+                                      flex: 3,
+                                    ),
+                                    Checkbox(
+                                      value: value,
+                                      onChanged: (bool? newValue) {
+                                        setState(() {
+                                          value = newValue!;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                )),
+                              ),
                             );
                           },
                         );
@@ -159,8 +171,6 @@ class _TaskScreenState extends State<TaskScreen> {
   }
 }
 
-void del(bool done, int id) {
-  if (done = true) {
-    DBHelper().deleteTask(id);
-  }
+void del(int id) {
+  DBHelper().deleteTask(id);
 }

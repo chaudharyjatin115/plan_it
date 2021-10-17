@@ -12,7 +12,7 @@ class DBHelper {
         await openDatabase(join(await getDatabasesPath(), 'task_database.db'),
             onCreate: (db, version) {
       return db.execute(
-        'CREATE TABLE tasks(id INTEGER PRIMARY KEY,name TEXT,date INTEGER)',
+        'CREATE TABLE tasks(id INTEGER PRIMARY KEY,name TEXT,date INTEGER,isDone TEXT)',
       );
     }, version: 1);
     return database;
@@ -24,7 +24,7 @@ class DBHelper {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<List<Task>> getTasks() async {
+  Future<List<Task>> getTask() async {
     final db = await main();
     final List<Map<String, dynamic>> maps = await db.query('tasks');
     return List.generate(
@@ -33,6 +33,7 @@ class DBHelper {
               id: maps[index]['id'],
               date: maps[index]['date'],
               name: maps[index]['name'],
+              isDone: maps[index]['isDone'],
             ));
   }
 
@@ -43,5 +44,13 @@ class DBHelper {
       where: 'id=?',
       whereArgs: [id],
     );
+  }
+
+  Future<int> getCount() async {
+    Database db = await DBHelper().main();
+    List<Map<String, dynamic>> x =
+        await db.rawQuery('SELECT COUNT (*) from tasks');
+    int result = Sqflite.firstIntValue(x)!.toInt();
+    return result;
   }
 }
