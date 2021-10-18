@@ -2,7 +2,7 @@ class Task {
   final int? id;
   final String? name;
   final String? date;
-  late final String? isDone;
+  final String? isDone;
 
   Task({this.id, this.date, this.name, this.isDone});
   Map<String, dynamic> toMap() {

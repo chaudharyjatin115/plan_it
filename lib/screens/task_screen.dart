@@ -42,6 +42,7 @@ class _TaskScreenState extends State<TaskScreen> {
                             setState(() {
                               DBHelper().insertTask(Task(
                                 name: textcontroller.text,
+                                isDone: 'false',
                               ));
                             });
                           },
@@ -72,7 +73,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       child: Column(
                         children: [
                           Text(
-                            '12',
+                            '18',
                             style: TextStyle(fontSize: 60.0),
                           )
                         ],
@@ -138,13 +139,13 @@ class _TaskScreenState extends State<TaskScreen> {
                                       ),
                                     ),
                                     Spacer(
-                                      flex: 3,
+                                      flex: 2,
                                     ),
                                     Checkbox(
                                       value: value,
                                       onChanged: (bool? newValue) {
                                         setState(() {
-                                          value = newValue!;
+                                          value = true;
                                         });
                                       },
                                     ),
@@ -173,4 +174,11 @@ class _TaskScreenState extends State<TaskScreen> {
 
 void del(int id) {
   DBHelper().deleteTask(id);
+}
+
+bool setTrue(String val) {
+  if (val == 'true') {
+    return true;
+  } else
+    return false;
 }
