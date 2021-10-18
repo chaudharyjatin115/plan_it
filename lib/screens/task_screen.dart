@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:plan_it/models/dbhelper.dart';
-
-import 'package:plan_it/widgets/addtask.dart';
+import 'package:plan_it/models/task.dart';
 
 class TaskScreen extends StatefulWidget {
   @override
@@ -18,7 +17,8 @@ class _TaskScreenState extends State<TaskScreen> {
     // DBHelper().main();
   }
 
-  bool value = false;
+  final textcontroller = TextEditingController();
+  bool bvalue = false;
   DateFormat formatter = DateFormat('MMM');
   DateFormat dayformat = DateFormat('EEEE');
 
@@ -28,13 +28,34 @@ class _TaskScreenState extends State<TaskScreen> {
       floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Color(0xff50e3a4),
           onPressed: () {
-            setState(() {});
             showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return Container(child: AddTask());
-              },
-            );
+                context: context,
+                builder: (BuildContext context) {
+                  return Container(
+                    child: Column(
+                      children: [
+                        TextField(
+                          controller: textcontroller,
+                          autofocus: true,
+                          textAlign: TextAlign.center,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                DBHelper().insertTask(Task(
+                                  name: textcontroller.text,
+                                  isDone: 'false',
+                                ));
+                              });
+                            },
+                            child: Container(
+                              child: Text('Add Task'),
+                            ))
+                      ],
+                    ),
+                  );
+                  ;
+                });
           },
           label: Icon(Icons.add)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -112,21 +133,19 @@ class _TaskScreenState extends State<TaskScreen> {
                                   Container(
                                     padding: EdgeInsets.only(
                                         top: 25.0, bottom: 25.0, left: 8.0),
-                                    child: Expanded(
-                                      child: Text(
-                                        '${snapshot.data[index].name}',
-                                        style: TextStyle(fontSize: 16.0),
-                                      ),
+                                    child: Text(
+                                      '${snapshot.data[index].name}',
+                                      style: TextStyle(fontSize: 16.0),
                                     ),
                                   ),
                                   Spacer(
                                     flex: 2,
                                   ),
                                   Checkbox(
-                                    value: value,
+                                    value: setTrue(snapshot.data[index].isDone),
                                     onChanged: (bool? newValue) {
                                       setState(() {
-                                        value = newValue!;
+                                        bvalue = newValue!;
                                       });
                                     },
                                   ),
