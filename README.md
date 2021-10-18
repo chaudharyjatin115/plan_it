@@ -1,1 +1,2 @@
-The ui is completed only backend left
+ a small todo app built with flutter just to test databases
+ 
