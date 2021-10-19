@@ -24,7 +24,7 @@ class DBHelper {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<List<Task>> getTask() async {
+  Future<List<dynamic>> getTask() async {
     final db = await main();
     final List<Map<String, dynamic>> maps = await db.query('tasks');
     return List.generate(
@@ -46,11 +46,8 @@ class DBHelper {
     );
   }
 
-  Future<int> getCount() async {
-    Database db = await DBHelper().main();
-    List<Map<String, dynamic>> x =
-        await db.rawQuery('SELECT COUNT (*) from tasks');
-    int result = Sqflite.firstIntValue(x)!.toInt();
-    return result;
+  Future<List<Map<String, dynamic>>> getDataInMap() async {
+    Database database = await this.main();
+    return database.query("ahkam_fiqhia");
   }
 }

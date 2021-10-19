@@ -18,7 +18,7 @@ class _TaskScreenState extends State<TaskScreen> {
   }
 
   final textcontroller = TextEditingController();
-  bool bvalue = false;
+  bool val = false;
   DateFormat formatter = DateFormat('MMM');
   DateFormat dayformat = DateFormat('EEEE');
 
@@ -54,7 +54,6 @@ class _TaskScreenState extends State<TaskScreen> {
                       ],
                     ),
                   );
-                  ;
                 });
           },
           label: Icon(Icons.add)),
@@ -142,13 +141,12 @@ class _TaskScreenState extends State<TaskScreen> {
                                     flex: 2,
                                   ),
                                   Checkbox(
-                                    value: setTrue(snapshot.data[index].isDone),
-                                    onChanged: (bool? newValue) {
-                                      setState(() {
-                                        bvalue = newValue!;
-                                      });
-                                    },
-                                  ),
+                                      value: val,
+                                      onChanged: (bool? newv) {
+                                        setState(() {
+                                          val = newv!;
+                                        });
+                                      })
                                 ],
                               )),
                             ),
