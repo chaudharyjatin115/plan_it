@@ -18,7 +18,7 @@ class _TaskScreenState extends State<TaskScreen> {
   }
 
   final textcontroller = TextEditingController();
-  bool val = false;
+  bool? val;
   DateFormat formatter = DateFormat('MMM');
   DateFormat dayformat = DateFormat('EEEE');
 
@@ -141,10 +141,10 @@ class _TaskScreenState extends State<TaskScreen> {
                                     flex: 2,
                                   ),
                                   Checkbox(
-                                      value: val,
+                                      value: setTrue(),
                                       onChanged: (bool? newv) {
                                         setState(() {
-                                          val = newv!;
+                                          True();
                                         });
                                       })
                                 ],
@@ -173,9 +173,10 @@ void del(int id) {
   DBHelper().deleteTask(id);
 }
 
-bool setTrue(String val) {
-  if (val == 'true') {
-    return true;
-  } else
-    return false;
+bool setTrue() {
+  return false;
+}
+
+bool True() {
+  return true;
 }
