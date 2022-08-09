@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plan_it/screens/task_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -24,7 +24,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'Oswald',
       ),
-      home: TaskScreen(),
+      home: Container(),
     );
   }
 }
+
+
