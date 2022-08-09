@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:plan_it/src/ui/themes/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,12 +21,21 @@ class _MyAppState extends State<MyApp> {
     );
 
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Oswald',
-      ),
+      themeMode: ThemeMode.system,
+      theme: MyThemes.lightTheme,
+      darkTheme: MyThemes.darkTheme,
       home: Container(),
     );
   }
 }
 
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: ListTile(),
+    );
+  }
+}
