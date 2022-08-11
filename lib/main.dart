@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:plan_it/src/ui/screens/home_screen.dart';
 import 'package:plan_it/src/ui/themes/theme.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // transparent status bar
+  ));
   runApp(MyApp());
 }
 
@@ -21,21 +26,11 @@ class _MyAppState extends State<MyApp> {
     );
 
     return MaterialApp(
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: Container(),
+      home: HomeScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: ListTile(),
-    );
-  }
-}
