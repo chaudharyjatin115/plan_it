@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyThemes {
   static final darkTheme = ThemeData(
+      fontFamily: 'Helveitca',
       appBarTheme: AppBarTheme(
         color: Color(
           0xff3450A1,
@@ -16,6 +17,7 @@ class MyThemes {
         0xff3450A1,
       ));
   static final lightTheme = ThemeData(
+      fontFamily: 'Helvetica',
       scaffoldBackgroundColor: Colors.white,
       brightness: Brightness.light,
       primaryColor: Color(0xff3450a1),

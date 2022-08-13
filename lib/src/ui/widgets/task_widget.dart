@@ -16,7 +16,7 @@ class TaskWidget extends StatelessWidget {
               const EdgeInsets.only(left: 40, right: 40, bottom: 7.0, top: 7.0),
           child: Container(
             height: 60,
-            width: 300,
+            width: 280,
             decoration: BoxDecoration(
               color: containerColor,
               borderRadius: BorderRadius.circular(25.0),
@@ -24,7 +24,7 @@ class TaskWidget extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(
-                  width: 20,
+                  width: 15,
                 ),
                 Checkbox(
                     checkColor: containerColor,
@@ -33,7 +33,7 @@ class TaskWidget extends StatelessWidget {
                     value: listTodo[index].isDone,
                     onChanged: ((value) {})),
                 SizedBox(
-                  width: 50,
+                  width: 40,
                 ),
                 Text(
                   listTodo[index].taskName,
