@@ -11,30 +11,52 @@ class ToDoCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        height: 120,
-        width: MediaQuery.of(context).size.width,
+        height: 110,
+        width: MediaQuery.of(context).size.width.toDouble(),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: todoCatList.length,
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.only(
-                left: 40,
+                left: 30,
               ),
               child: Container(
-                child: Column(
-                  children: [
-                    Text(
-                      '${todoCatList[index].toDoList.length} tasks',
-                      style: TextStyle(
-                          color: Colors.white60,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      child: Text(todoCatList[index].name),
-                    )
-                  ],
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                  
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          '${todoCatList[index].toDoList.length} tasks',
+                          style: TextStyle(
+                              color: Colors.white60,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          todoCatList[index].name,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: LinearProgressIndicator(
+                          color: todoCatList[index].color,
+                          value: todoCatList[index].length.toDouble(),
+                          backgroundColor: Colors.grey,
+                        ),
+                      )
+                      
+                    ],
+                  ),
                 ),
                 decoration: BoxDecoration(
                   color: containerColor,
@@ -43,7 +65,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                     BoxShadow(
                       color: Colors.black.withOpacity(0.3),
                       spreadRadius: 1.0,
-//
+                      //
                       blurRadius: 4,
                       offset: Offset(0, 2), // changes position of shadow
                     ),

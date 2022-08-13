@@ -15,8 +15,8 @@ class TaskWidget extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 40, right: 40, bottom: 7.0, top: 7.0),
           child: Container(
-            height: 60,
-            width: 280,
+            height: 70,
+            width: 270,
             decoration: BoxDecoration(
               color: containerColor,
               borderRadius: BorderRadius.circular(25.0),
@@ -37,7 +37,7 @@ class TaskWidget extends StatelessWidget {
                 ),
                 Text(
                   listTodo[index].taskName,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                 ),
               ],
             ),

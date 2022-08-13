@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ToDo {
   final String taskName;
   final bool isDone;
@@ -6,16 +8,17 @@ class ToDo {
 }
 
 final todoCatList = [
-  ToDoCategory('Buisness', 20, listTodo),
-  ToDoCategory('Personal', 3, listTodoTwo)
+  ToDoCategory('Buisness', 20, listTodo, Colors.blueAccent),
+  ToDoCategory('Personal', 3, listTodoTwo, ThemeData.dark().primaryColor)
 ];
 
 class ToDoCategory {
   final String name;
   final int length;
   final List<ToDo> toDoList;
+  final Color? color;
 
-  ToDoCategory(this.name, this.length, this.toDoList);
+  ToDoCategory(this.name, this.length, this.toDoList, this.color);
 }
 // debug data
 
