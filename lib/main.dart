@@ -5,6 +5,7 @@ import 'package:plan_it/src/ui/screens/home_screen.dart';
 import 'package:plan_it/src/ui/themes/theme.dart';
 
 void main() {
+  
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
   ));
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     );
 
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       home: HomeScreen(),

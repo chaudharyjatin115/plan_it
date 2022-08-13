@@ -4,9 +4,14 @@ import 'package:plan_it/src/ui/widgets/custom_app_bar.dart';
 import 'package:plan_it/src/ui/widgets/task_category_widget.dart';
 import 'package:plan_it/src/ui/widgets/task_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
   
@@ -19,7 +24,10 @@ class HomeScreen extends StatelessWidget {
           ),
           child: IconButton(
             iconSize: 40,
-            icon: Icon(Icons.add),
+            icon: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
             onPressed: (() {}),
           ),
         ),

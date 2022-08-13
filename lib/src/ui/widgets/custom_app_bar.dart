@@ -17,7 +17,10 @@ class CustomAppBar extends StatelessWidget {
       collapsedHeight: 80,
       actions: [
         Expanded(
-          child: Icon(Icons.menu),
+          child: Icon(
+            Icons.menu,
+            color: Theme.of(context).iconTheme.color,
+          ),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width - 200,

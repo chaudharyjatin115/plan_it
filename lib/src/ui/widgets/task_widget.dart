@@ -9,6 +9,7 @@ class TaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return SliverList(
       delegate: SliverChildBuilderDelegate(((context, index) {
         return Padding(
@@ -18,7 +19,8 @@ class TaskWidget extends StatelessWidget {
             height: 70,
             width: 270,
             decoration: BoxDecoration(
-              color: containerColor,
+              color: dark ? containerColor : Colors.white,
+              boxShadow: [],
               borderRadius: BorderRadius.circular(25.0),
             ),
             child: Row(
@@ -37,7 +39,10 @@ class TaskWidget extends StatelessWidget {
                 ),
                 Text(
                   listTodo[index].taskName,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: dark ? Colors.white : Color(0xff373B5E)),
                 ),
               ],
             ),

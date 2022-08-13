@@ -9,6 +9,7 @@ class ToDoCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return SliverToBoxAdapter(
       child: Container(
         height: 110,
@@ -33,7 +34,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                         child: Text(
                           '${todoCatList[index].toDoList.length} tasks',
                           style: TextStyle(
-                              color: Colors.white60,
+                              color: Color(0xffADBAEB),
                               fontSize: 10,
                               fontWeight: FontWeight.bold),
                         ),
@@ -59,7 +60,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: containerColor,
+                  color: dark ? containerColor : Colors.white,
                   borderRadius: BorderRadius.circular(30.0),
                   boxShadow: [
                     BoxShadow(
