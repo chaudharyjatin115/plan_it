@@ -42,7 +42,7 @@ class TaskWidget extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
-                      color: dark ? Colors.white : Color(0xff373B5E)),
+                      color: dark ? Colors.white : tasktitleColor),
                 ),
               ],
             ),

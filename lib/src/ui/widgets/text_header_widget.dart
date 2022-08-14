@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plan_it/src/ui/const/app_constants.dart';
 
 class TextHeaderWidget extends StatelessWidget {
   const TextHeaderWidget({
@@ -19,7 +20,7 @@ class TextHeaderWidget extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 30,
-                  color: dark ? Colors.white : Color(0xff020417)),
+                  color: dark ? Colors.white : textHeaderColor),
             )),
       ),
     );

@@ -12,7 +12,7 @@ class ToDoCategoryWidget extends StatelessWidget {
     final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return SliverToBoxAdapter(
       child: Container(
-        height: 110,
+        height: 130,
         width: MediaQuery.of(context).size.width.toDouble(),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -20,7 +20,7 @@ class ToDoCategoryWidget extends StatelessWidget {
           itemBuilder: ((context, index) {
             return Padding(
               padding: const EdgeInsets.only(
-                left: 30,
+                left: 25,
               ),
               child: Container(
                 child: Center(
@@ -34,10 +34,13 @@ class ToDoCategoryWidget extends StatelessWidget {
                         child: Text(
                           '${todoCatList[index].toDoList.length} tasks',
                           style: TextStyle(
-                              color: Color(0xffADBAEB),
+                              color: taskLenghtColor,
                               fontSize: 10,
                               fontWeight: FontWeight.bold),
                         ),
+                      ),
+                      SizedBox(
+                        height: 15,
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20),
@@ -46,6 +49,9 @@ class ToDoCategoryWidget extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
+                      ),
+                      SizedBox(
+                        height: 15,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -64,15 +70,16 @@ class ToDoCategoryWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      spreadRadius: 1.0,
+                      color:
+                          dark ? Colors.black.withOpacity(0.3) : Colors.white,
+                      spreadRadius: 3.0,
                       //
-                      blurRadius: 4,
-                      offset: Offset(0, 2), // changes position of shadow
+                      blurRadius: 6,
+                      offset: Offset(0, 4), // changes position of shadow
                     ),
                   ],
                 ),
-                height: 120,
+                height: 130,
                 width: 200,
               ),
             );

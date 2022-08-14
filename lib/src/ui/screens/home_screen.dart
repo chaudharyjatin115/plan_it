@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plan_it/src/ui/screens/add_task_screen.dart';
 import 'package:plan_it/src/ui/widgets/custom_app_bar.dart';
 
 import 'package:plan_it/src/ui/widgets/task_category_widget.dart';
@@ -14,21 +15,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-  
-  
     return Scaffold(
-        floatingActionButton: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(40),
-            color: Theme.of(context).primaryColor,
-          ),
-          child: IconButton(
-            iconSize: 40,
-            icon: Icon(
-              Icons.add,
-              color: Colors.white,
+        floatingActionButton: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => AddTaskScreen()),
+              ),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              color: Theme.of(context).primaryColor,
             ),
-            onPressed: (() {}),
+            child: IconButton(
+              iconSize: 40,
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onPressed: (() {}),
+            ),
           ),
         ),
         body: CustomScrollView(
@@ -64,14 +73,9 @@ class TextHeaderWidget extends StatelessWidget {
             width: 100,
             child: Text(
               'Whats`up, Olivia',
-              style:
-                  TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
             )),
       ),
     );
   }
 }
-
-
-
-

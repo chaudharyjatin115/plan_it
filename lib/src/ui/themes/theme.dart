@@ -9,12 +9,12 @@ class MyThemes {
         ),
       ),
     
-      primaryColor: Color(0xffA056C5),
-      colorScheme: ColorScheme.dark(primary: Color(0xffA056C5)),
+      primaryColor: Color(0xffD103FC),
+      colorScheme: ColorScheme.dark(primary: Color(0xffD103FC)),
       useMaterial3: true,
       
       scaffoldBackgroundColor: Color(
-        0xff3450A1,
+        0xff3D47AF,
       ));
   static final lightTheme = ThemeData(
       primaryIconTheme: IconThemeData(
