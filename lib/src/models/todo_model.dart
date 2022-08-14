@@ -9,7 +9,7 @@ class ToDo {
 
 final todoCatList = [
   ToDoCategory('Buisness', 20, listTodo, Colors.blueAccent),
-  ToDoCategory('Personal', 3, listTodoTwo, ThemeData.dark().primaryColor)
+  ToDoCategory('Personal', 3, listTodoTwo, Color(0xffD103FC))
 ];
 
 class ToDoCategory {
