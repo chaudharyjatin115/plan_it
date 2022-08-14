@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     );
 
     return MaterialApp(
+      
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
