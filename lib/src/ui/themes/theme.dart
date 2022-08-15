@@ -4,9 +4,7 @@ class MyThemes {
   static final darkTheme = ThemeData(
     
       fontFamily: 'Helveitca',
-      appBarTheme: AppBarTheme(
-iconTheme: IconThemeData(color: Color(0xff2643C4))
-      ),
+ 
     
       primaryColor: Color(0xffD103FC),
       colorScheme: ColorScheme.dark(primary: Color(0xffD103FC)),

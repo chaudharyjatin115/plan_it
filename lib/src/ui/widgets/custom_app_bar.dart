@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -25,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width - 200,
         ),
-        Expanded(child: Icon(Icons.search)),
+        Expanded(child: Icon(CupertinoIcons.search)),
         Expanded(child: Icon(Icons.notifications)),
       ],
     );
