@@ -4,10 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:plan_it/src/ui/screens/home_screen.dart';
 import 'package:plan_it/src/ui/themes/theme.dart';
 
+import 'src/ui/screens/login_screen.dart';
+
 void main() {
   
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // transparent status bar
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent // transparent status bar
   ));
   runApp(MyApp());
 }
@@ -31,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
