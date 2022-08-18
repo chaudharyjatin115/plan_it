@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:plan_it/src/ui/screens/home_screen.dart';
+import 'package:plan_it/src/ui/screens/sign_up%20screen.dart';
 import 'package:plan_it/src/ui/themes/theme.dart';
 
 import 'src/ui/screens/login_screen.dart';
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: LoginScreen(),
+      home: SignUpScreen(),
     );
   }
 }

@@ -1,8 +1,8 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:plan_it/src/ui/const/app_constants.dart';
+import 'package:plan_it/src/ui/widgets/already_account_widget.dart';
 
 import 'package:plan_it/src/ui/widgets/custom_login_input_field.dart';
 
@@ -51,18 +51,11 @@ class SignUpScreen extends HookWidget {
               SizedBox(
                 height: 150,
               ),
-              TextButton(
-                onPressed: (() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) {
-                    return SignUpScreen();
-                  })));
-                }),
-                child: Text(
-                  'Alredy have an account? sign up',
-                  style: TextStyle(color: dark ? Colors.white : textColor),
-                ),
-              )
+             
+              AlreadyAccountWidget(
+                  primaryText: 'Already have an Account?',
+                  secondaryText: 'Login here',
+                  onTap: () {})
             ],
           ),
         ),

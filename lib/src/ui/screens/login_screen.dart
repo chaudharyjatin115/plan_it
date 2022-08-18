@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:plan_it/src/ui/const/app_constants.dart';
+import 'package:plan_it/src/ui/widgets/already_account_widget.dart';
 
 import 'package:plan_it/src/ui/widgets/custom_login_input_field.dart';
 
@@ -52,13 +53,10 @@ class LoginScreen extends HookWidget {
               SizedBox(
                 height: 150,
               ),
-              TextButton(
-                onPressed: (() {}),
-                child: Text(
-                  'new here? sign up',
-                  style: TextStyle(color: dark ? Colors.white : textColor),
-                ),
-              )
+              AlreadyAccountWidget(
+                  primaryText: 'New here?',
+                  secondaryText: 'sign up here',
+                  onTap: () {})
             ],
           ),
         ),
