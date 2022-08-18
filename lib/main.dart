@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:plan_it/src/ui/screens/add_task_screen.dart';
 
 import 'package:plan_it/src/ui/screens/home_screen.dart';
 import 'package:plan_it/src/ui/screens/sign_up%20screen.dart';
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: SignUpScreen(),
+      home: AddTaskScreen(),
     );
   }
 }

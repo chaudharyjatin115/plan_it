@@ -20,7 +20,7 @@ class InPutField extends StatelessWidget {
       child: Container(
         width: 380.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(20.0),
           color: dark ? containerColor : Colors.white,
         ),
         child: TextField(
@@ -33,7 +33,7 @@ class InPutField extends StatelessWidget {
             fillColor: Colors.grey,
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Theme.of(context).primaryColor),
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(20.0),
             ),
             hintText: hint,
             hintStyle:

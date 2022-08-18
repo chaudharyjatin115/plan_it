@@ -5,6 +5,7 @@ import 'package:plan_it/src/ui/const/app_constants.dart';
 import 'package:plan_it/src/ui/widgets/already_account_widget.dart';
 
 import 'package:plan_it/src/ui/widgets/custom_login_input_field.dart';
+import 'package:plan_it/src/ui/widgets/third_party_signin_button.dart';
 
 class SignUpScreen extends HookWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -19,6 +20,26 @@ class SignUpScreen extends HookWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(
+                height: 40.0,
+              ),
+              const Text(
+                'Sign up with one of the following options',
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              ThirdPartySignInButton(
+                onTap: () {
+                  // context.read<AuthBloc>().add(AuthEventGoogleSignIn());
+                },
+                assetLink: 'images/google-logo.png',
+                dark: dark,
+              ),
+              SizedBox(
+                height: 30,
+              ),
               InPutField(
                 dark: dark,
                 password: false,
@@ -55,7 +76,9 @@ class SignUpScreen extends HookWidget {
               AlreadyAccountWidget(
                   primaryText: 'Already have an Account?',
                   secondaryText: 'Login here',
-                  onTap: () {})
+                onTap: () {},
+                dark: dark,
+              )
             ],
           ),
         ),

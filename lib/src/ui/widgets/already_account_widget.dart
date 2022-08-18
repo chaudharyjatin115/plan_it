@@ -5,16 +5,17 @@ class AlreadyAccountWidget extends StatelessWidget {
   final String? primaryText;
   final String? secondaryText;
   final Function()? onTap;
-  const AlreadyAccountWidget({
-    Key? key,
-    required this.primaryText,
-    required this.secondaryText,
-    required this.onTap,
-  }) : super(key: key);
+  final bool dark;
+  const AlreadyAccountWidget(
+      {Key? key,
+      required this.primaryText,
+      required this.secondaryText,
+      required this.onTap,
+      required this.dark})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -29,7 +30,7 @@ class AlreadyAccountWidget extends StatelessWidget {
           onPressed: onTap,
           child: Text(
             secondaryText!,
-            style: TextStyle(color: containerColor),
+            style: TextStyle(color: dark ? containerColor : Colors.blueGrey),
           ),
         ),
       ],
