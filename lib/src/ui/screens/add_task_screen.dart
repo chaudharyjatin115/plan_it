@@ -8,12 +8,24 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        actions: [
-          IconButton(
+    
+
+    
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            actions: [
+              IconButton(
             onPressed: () {},
-            icon: Icon(CupertinoIcons.xmark_circle),
+                icon: Icon(
+                  CupertinoIcons.xmark_circle,
+                  size: 50,
+                ),
+              )
+            ],
+          ),
+          SliverToBoxAdapter(
+            child: Center(child: Column(children: [])),
           )
         ],
       ),
