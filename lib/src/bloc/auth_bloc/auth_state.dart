@@ -28,3 +28,6 @@ class AuthStateIsInRegistrationView extends AuthState {
   AuthStateIsInRegistrationView({required bool isLoading, AuthError? authError})
       : super(isLoading: isLoading, authError: authError);
 }
+class AuthStateIsInLogin extends AuthState {
+  AuthStateIsInLogin({required bool isLoading}) : super(isLoading: isLoading);
+}

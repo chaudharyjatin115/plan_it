@@ -39,3 +39,5 @@ class AuthEventGoogleSignin implements AuthEvent {
 }
 
 class AuthEventDeleteAccount implements AuthEvent {}
+
+class AuthEventIsInLogin implements AuthEvent {}
