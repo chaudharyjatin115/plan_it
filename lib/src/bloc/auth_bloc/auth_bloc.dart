@@ -72,5 +72,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             AuthStateLoggedOut(isLoading: false, authError: AuthError.from(e)));
       }
     });
+    on<AuthEventInitialize>((event, emit) {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        emit(AuthStateLoggedOut(isLoading: false));
+      } else {
+        emit(AuthStateLoggedIn(user: user, isLoading: false));
+      }
+    });
+    on<AuthEventIsInAddTaskScreen>(
+      (event, emit) {
+        emit(AuthStateIsInAddTaskScreen(isLoading: false));
+      },
+    );
   }
 }

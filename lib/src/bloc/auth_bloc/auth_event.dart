@@ -41,3 +41,6 @@ class AuthEventGoogleSignin implements AuthEvent {
 class AuthEventDeleteAccount implements AuthEvent {}
 
 class AuthEventIsInLogin implements AuthEvent {}
+class AuthEventInitialize implements AuthEvent {}
+
+class AuthEventIsInAddTaskScreen implements AuthEvent {}

@@ -31,3 +31,7 @@ class AuthStateIsInRegistrationView extends AuthState {
 class AuthStateIsInLogin extends AuthState {
   AuthStateIsInLogin({required bool isLoading}) : super(isLoading: isLoading);
 }
+class AuthStateIsInAddTaskScreen extends AuthState {
+  AuthStateIsInAddTaskScreen({required bool isLoading})
+      : super(isLoading: isLoading);
+}
