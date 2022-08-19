@@ -16,30 +16,37 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: ((context) => AddTaskScreen()),
-              ),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Theme.of(context).primaryColor,
-            ),
-            child: IconButton(
-              iconSize: 40,
-              icon: Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onPressed: (() {}),
-            ),
-          ),
-        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).primaryColor,
+          onPressed: () {},
+          child: Icon(Icons.add),
+        )
+        //
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: ((context) => AddTaskScreen()),
+        //       ),
+        //     );
+        //   },
+        //   child: Container(
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(40),
+        //       color: Theme.of(context).primaryColor,
+        //     ),
+        //     child: IconButton(
+        //       iconSize: 40,
+        //       icon: Icon(
+        //         Icons.add,
+        //         color: Colors.white,
+        //       ),
+        //       onPressed: (() {}),
+        //     ),
+        //   ),
+        // ),
+        ,
         body: CustomScrollView(
           slivers: [
             CustomAppBar(),
