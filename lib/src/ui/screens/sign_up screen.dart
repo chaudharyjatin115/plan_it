@@ -1,6 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:plan_it/src/bloc/auth_bloc/auth_bloc.dart';
+import 'package:plan_it/src/bloc/auth_bloc/auth_event.dart';
 import 'package:plan_it/src/ui/const/app_constants.dart';
 import 'package:plan_it/src/ui/widgets/already_account_widget.dart';
 
@@ -12,6 +14,8 @@ class SignUpScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
     final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       body: Center(
@@ -32,7 +36,7 @@ class SignUpScreen extends HookWidget {
               ),
               ThirdPartySignInButton(
                 onTap: () {
-                  // context.read<AuthBloc>().add(AuthEventGoogleSignIn());
+                  context.read<AuthBloc>().add(AuthEventGoogleSignin());
                 },
                 assetLink: 'images/google-logo.png',
                 dark: dark,
@@ -41,6 +45,7 @@ class SignUpScreen extends HookWidget {
                 height: 30,
               ),
               InPutField(
+                textEditingController: emailController,
                 dark: dark,
                 password: false,
                 hint: 'enter your email',
@@ -49,6 +54,7 @@ class SignUpScreen extends HookWidget {
                 height: 20,
               ),
               InPutField(
+                textEditingController: passwordController,
                 dark: dark,
                 password: true,
                 hint: 'enter your password',
@@ -65,18 +71,23 @@ class SignUpScreen extends HookWidget {
                       color: dark ? containerColor : Colors.white),
                   child: TextButton(
                     child: Text('sign up'),
-                    onPressed: (() {}),
+                    onPressed: (() {
+                      context.read<AuthBloc>().add(AuthEventEmailRegister(
+                          email: emailController.text,
+                          password: passwordController.text));
+                    }),
                   ),
                 ),
               ),
               SizedBox(
                 height: 150,
               ),
-             
               AlreadyAccountWidget(
-                  primaryText: 'Already have an Account?',
-                  secondaryText: 'Login here',
-                onTap: () {},
+                primaryText: 'Already have an Account?',
+                secondaryText: 'Login here',
+                onTap: () {
+                  context.read<AuthBloc>().add(AuthEventGotoLogin());
+                },
                 dark: dark,
               )
             ],

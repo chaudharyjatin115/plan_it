@@ -7,11 +7,13 @@ class InPutField extends StatelessWidget {
     required this.dark,
     required this.password,
     required this.hint,
+      required this.textEditingController
   }) : super(key: key);
 
   final bool dark;
   final bool password;
   final String hint;
+  final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class InPutField extends StatelessWidget {
           color: dark ? containerColor : Colors.white,
         ),
         child: TextField(
+          controller: textEditingController,
           style: const TextStyle(color: Colors.grey),
           obscureText: password,
           textAlign: TextAlign.start,
