@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plan_it/src/models/to_do_category_model.dart';
 import 'package:plan_it/src/models/todo_model.dart';
 import 'package:plan_it/src/ui/const/app_constants.dart';
 
@@ -56,7 +57,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: LinearProgressIndicator(
-                          color: todoCatList[index].color,
+                          // color: Color(todoCatList[index].color),
                           value: todoCatList[index].length.toDouble(),
                           backgroundColor: Colors.grey,
                         ),
