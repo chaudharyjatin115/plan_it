@@ -2,7 +2,6 @@ class ToDo {
   final String taskName;
   final bool isDone;
 
-
   ToDo({
     required this.taskName,
     required this.isDone,
