@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.plan_it">
+    android:name="com.example.plan_it"
    <application
         android:label="plan_it"
         android:icon="@mipmap/ic_launcher">
