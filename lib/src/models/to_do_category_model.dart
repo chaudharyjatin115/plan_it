@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:plan_it/data/dummy_data.dart';
-
 import 'todo_model.dart';
 
 class ToDoCategory {
@@ -16,23 +13,18 @@ class ToDoCategory {
       //  this.toDoList,
       this.color,
       this.refrence);
-  factory ToDoCategory.fromSnapshot(DocumentSnapshot snapshot) {
-    final newToDoCategory =
-        ToDoCategory.fromJson(snapshot.data() as Map<String, dynamic>);
-    newToDoCategory.refrence = snapshot.reference.id;
-    return newToDoCategory;
-  }
+
   // 6
   factory ToDoCategory.fromJson(Map<String, dynamic> json) =>
-      _ToDoCategoryFromJson(json);
+      ToDoCategoryFromJson(json);
   // 7
-  Map<String, dynamic> toJson() => _ToDoCategoryToJson(this);
+  Map<String, dynamic> toJson() => ToDoCategoryToJson(this);
 
   @override
   String toString() => 'Pet<$name>';
 }
 
-ToDoCategory _ToDoCategoryFromJson(Map<String, dynamic> json) {
+ToDoCategory ToDoCategoryFromJson(Map<String, dynamic> json) {
   return ToDoCategory(
       json['name'] as String,
       json['length'] as int,
@@ -42,7 +34,7 @@ ToDoCategory _ToDoCategoryFromJson(Map<String, dynamic> json) {
 }
 
 // 2
-List<ToDo> _convertToDos(List<dynamic> toDosMap) {
+List<ToDo> convertToDos(List<dynamic> toDosMap) {
   final toDos = <ToDo>[];
 
   for (final toDos in toDosMap) {
@@ -52,7 +44,7 @@ List<ToDo> _convertToDos(List<dynamic> toDosMap) {
 }
 
 // 3
-Map<String, dynamic> _ToDoCategoryToJson(ToDoCategory instance) =>
+Map<String, dynamic> ToDoCategoryToJson(ToDoCategory instance) =>
     <String, dynamic>{
       'name': instance.name,
       'color': instance.color,

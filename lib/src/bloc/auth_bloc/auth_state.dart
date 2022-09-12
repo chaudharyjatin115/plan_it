@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:plan_it/src/models/to_do_category_model.dart';
+
 import 'package:plan_it/src/services/auth_services/auth_error.dart';
 
 // base class
@@ -16,11 +16,12 @@ class AuthStateLoggedIn extends AuthState {
   final User user;
   // final List<ToDoCategory> toDoCategory;
 
-  AuthStateLoggedIn(
-      {required this.user, required bool isLoading, AuthError? authError,
-      // required this.toDoCategory
-      })
-      : super(isLoading: isLoading, authError: authError);
+  AuthStateLoggedIn({
+    required this.user,
+    required bool isLoading,
+    AuthError? authError,
+    // required this.toDoCategory
+  }) : super(isLoading: isLoading, authError: authError);
 }
 
 class AuthStateLoggedOut extends AuthState {

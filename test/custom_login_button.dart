@@ -21,7 +21,7 @@ class CustomLoginButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(title!),
         style: ElevatedButton.styleFrom(
-            primary: buttonColor,
+            backgroundColor: buttonColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
       ),
