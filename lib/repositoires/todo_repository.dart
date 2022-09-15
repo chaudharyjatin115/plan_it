@@ -1,8 +1,7 @@
 // ignore_for_file: unused_import
 
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plan_it/repositoires/base_todo_repository.dart';
 
@@ -17,5 +16,27 @@ class ToDoRepository extends BaseToDoRepository {
     return _firebaseFirestore
         .collection('todos')
         .add(toDoCategory.toDocument());
+  }
+
+  Stream<List<ToDoCategory>> retrieveToDos(User user) {
+    final snapsho = _firebaseFirestore
+        .collection("Users")
+        .doc(user.uid)
+        .collection('todos')
+        .snapshots()
+        .asyncMap((event) async {
+      List<ToDoCategory> todos = [];
+      for (var document in event.docs) {
+        var todoCat = ToDoCategory.fromJson(document.data());
+
+        todos.add(ToDoCategory(
+            name: todoCat.name,
+            length: todoCat.length,
+            toDoList: todoCat.toDoList,
+            color: todoCat.color));
+      }
+      return todos;
+    });
+    return snapsho;
   }
 }

@@ -1,8 +1,16 @@
-part of 'to_do_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:plan_it/src/models/to_do_category_model.dart';
 
-abstract class ToDoEvent extends Equatable {
-  const ToDoEvent();
+class ToDoCategoryEvent extends Equatable {
+  const ToDoCategoryEvent();
 
   @override
   List<Object> get props => [];
+}
+
+class WatchToDoCategoryEvent extends ToDoCategoryEvent {}
+
+class AddToDoCategoryEvent extends ToDoCategoryEvent {
+  final ToDoCategory toDoCategory;
+  AddToDoCategoryEvent(this.toDoCategory);
 }
