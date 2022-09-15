@@ -30,7 +30,7 @@ class ToDoRepository extends BaseToDoRepository {
         var todoCat = ToDoCategory.fromJson(document.data());
 
         todos.add(ToDoCategory(
-            name: todoCat.name,
+            name: todoCat.name ?? 'hello',
             length: todoCat.length,
             toDoList: todoCat.toDoList,
             color: todoCat.color));

@@ -71,7 +71,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(left: 20, right: 20),
                               child: LinearProgressIndicator(
-                                color: Color(todosi.color),
+                                color: Colors.black,
                                 value: 45,
                                 backgroundColor: Colors.grey,
                               ),
