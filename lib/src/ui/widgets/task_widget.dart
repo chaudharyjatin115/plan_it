@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plan_it/data/dummy_data.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_bloc.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_state.dart';
-import 'package:plan_it/src/models/todo_model.dart';
 import 'package:plan_it/src/ui/const/app_constants.dart';
 
 class TaskWidget extends StatelessWidget {
@@ -56,7 +55,7 @@ class TaskWidget extends StatelessWidget {
                   ),
                 ),
               );
-            }), childCount: listTodo.length),
+            }), childCount: 7),
           );
         } else {
           return Container(

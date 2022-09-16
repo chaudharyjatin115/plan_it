@@ -2,25 +2,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plan_it/dialogs/show_auth_error.dart';
+
 import 'package:plan_it/firebase_options.dart';
 
 import 'package:plan_it/src/bloc/auth_bloc/auth_bloc.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_bloc.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_event.dart';
-import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_state.dart';
-import 'package:plan_it/src/models/to_do_category_model.dart';
 
 import 'package:plan_it/src/ui/screens/add_task_screen.dart';
 
-import 'package:plan_it/src/ui/screens/home_screen.dart';
-import 'package:plan_it/src/ui/screens/loading/loading_screen.dart';
-import 'package:plan_it/src/ui/screens/sign_up%20screen.dart';
 import 'package:plan_it/src/ui/themes/theme.dart';
 
 import 'src/bloc/auth_bloc/auth_event.dart';
-import 'src/bloc/auth_bloc/auth_state.dart';
-import 'src/ui/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,9 +1,8 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../const/app_constants.dart';
-
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
@@ -30,13 +29,10 @@ class AddTaskScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 30.0),
             child: Container(
-                
                 decoration: BoxDecoration(
                     border: Border.all(width: 2.0, color: textColor),
                     shape: BoxShape.circle),
                 child: Icon(
-               
-        
                   CupertinoIcons.xmark,
                   size: 40,
                   semanticLabel: 'cancel',
@@ -101,15 +97,26 @@ class AddTaskScreen extends StatelessWidget {
                     SizedBox(
                       width: 20,
                     ),
+
+                    //
                     Container(
                       height: 30,
-                      child: Icon(Icons.select_all),
+                      child: IconButton(
+                        icon: Icon(Icons.select_all),
+                        onPressed: () {
+                          MaterialPicker(
+                            pickerColor: Colors.red, //default color
+                            onColorChanged: (Color color) {
+                              //on color picked
+                              print(color);
+                            },
+                          );
+                        },
+                      ),
                       decoration: BoxDecoration(
                           border: Border.all(width: 2.0, color: textColor),
                           shape: BoxShape.circle),
                     )
-                   
-                   
                   ],
                 ),
               )

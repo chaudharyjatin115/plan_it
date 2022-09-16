@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
+
 import 'package:plan_it/src/models/todo_model.dart';
 
 class ToDoCategory {
