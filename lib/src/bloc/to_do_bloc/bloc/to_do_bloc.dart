@@ -15,6 +15,8 @@ class ToDoBloc extends Bloc<ToDoCategoryEvent, ToDoState> {
         emit(ToDoCategoryAddedState());
       }
     });
+
+    on<ShowColorPickerEvent>((event, emit) => ShowColorPickerState());
   }
 
   void _onWatchToDoCategoryEvent(

@@ -2,14 +2,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plan_it/dialogs/show_auth_error.dart';
 
 import 'package:plan_it/firebase_options.dart';
 
 import 'package:plan_it/src/bloc/auth_bloc/auth_bloc.dart';
+import 'package:plan_it/src/bloc/auth_bloc/auth_state.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_bloc.dart';
 import 'package:plan_it/src/bloc/to_do_bloc/bloc/to_do_event.dart';
 
 import 'package:plan_it/src/ui/screens/add_task_screen.dart';
+import 'package:plan_it/src/ui/screens/home_screen.dart';
+import 'package:plan_it/src/ui/screens/loading/loading_screen.dart';
+import 'package:plan_it/src/ui/screens/login_screen.dart';
+import 'package:plan_it/src/ui/screens/sign_up%20screen.dart';
 
 import 'package:plan_it/src/ui/themes/theme.dart';
 
@@ -51,37 +57,38 @@ class _MyAppState extends State<MyApp> {
         themeMode: ThemeMode.system,
         theme: MyThemes.lightTheme,
         darkTheme: MyThemes.darkTheme,
-        home: AddTaskScreen(),
-        //BlocConsumer<AuthBloc, AuthState>(
-        //   builder: (((context, state) {
-        //     if (state is AuthStateLoggedIn) {
-        //       return HomeScreen();
-        //     } else if (state is AuthStateLoggedOut) {
-        //       return LoginScreen();
-        //     } else if (state is AuthStateIsInRegistrationView) {
-        //       return SignUpScreen();
-        //     } else if (state is AuthStateIsInLogin) {
-        //       return LoginScreen();
-        //     } else if (state is AuthStateIsInAddTaskScreen) {
-        //       return AddTaskScreen();
-        //     } else {
-        //       return Container();
-        //     }
-        //       })),
-        //       listener: ((context, state) {
-        //         if (state.isLoading) {
-        //           return LoadingScreen.instance()
-        //               .show(context: context, text: 'loading...');
-        //         } else {
-        //           LoadingScreen.instance().hide();
-        //         }
-        //         // we are going to deal with every auth error in one place
-        //         final authError = state.authError;
-        //         if (authError != null) {
-        //           showAuthError(authError: authError, context: context);
-        //         }
-        //       }),
-        //     ),
+        home:
+            // AddTaskScreen(),
+            BlocConsumer<AuthBloc, AuthState>(
+          builder: (((context, state) {
+            if (state is AuthStateLoggedIn) {
+              return HomeScreen();
+            } else if (state is AuthStateLoggedOut) {
+              return LoginScreen();
+            } else if (state is AuthStateIsInRegistrationView) {
+              return SignUpScreen();
+            } else if (state is AuthStateIsInLogin) {
+              return LoginScreen();
+            } else if (state is AuthStateIsInAddTaskScreen) {
+              return AddTaskScreen();
+            } else {
+              return Container();
+            }
+          })),
+          listener: ((context, state) {
+            if (state.isLoading) {
+              return LoadingScreen.instance()
+                  .show(context: context, text: 'loading...');
+            } else {
+              LoadingScreen.instance().hide();
+            }
+            // we are going to deal with every auth error in one place
+            final authError = state.authError;
+            if (authError != null) {
+              showAuthError(authError: authError, context: context);
+            }
+          }),
+        ),
       ),
     );
   }

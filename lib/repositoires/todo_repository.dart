@@ -35,6 +35,7 @@ class ToDoRepository extends BaseToDoRepository {
             toDoList: todoCat.toDoList,
             color: todoCat.color));
       }
+      print(todos);
       return todos;
     });
     return snapsho;

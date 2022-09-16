@@ -14,3 +14,5 @@ class AddToDoCategoryEvent extends ToDoCategoryEvent {
   final ToDoCategory toDoCategory;
   AddToDoCategoryEvent(this.toDoCategory);
 }
+
+class ShowColorPickerEvent extends ToDoCategoryEvent {}
