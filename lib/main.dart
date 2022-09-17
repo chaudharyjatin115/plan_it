@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plan_it/dialogs/show_auth_error.dart';
 
 import 'package:plan_it/firebase_options.dart';
+import 'package:plan_it/repositoires/todo_repository.dart';
 
 import 'package:plan_it/src/bloc/auth_bloc/auth_bloc.dart';
 import 'package:plan_it/src/bloc/auth_bloc/auth_state.dart';
@@ -48,7 +49,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ToDoBloc()..add(WatchToDoCategoryEvent()),
+          create: (context) =>
+              ToDoBloc(ToDoRepository())..add(ToDoCategoryLoadEvent()),
         ),
         BlocProvider(
             create: (context) => AuthBloc()..add(AuthEventInitialize())),

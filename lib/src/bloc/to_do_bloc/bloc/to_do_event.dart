@@ -8,7 +8,7 @@ class ToDoCategoryEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class WatchToDoCategoryEvent extends ToDoCategoryEvent {}
+class ToDoCategoryLoadEvent extends ToDoCategoryEvent {}
 
 class AddToDoCategoryEvent extends ToDoCategoryEvent {
   final ToDoCategory toDoCategory;

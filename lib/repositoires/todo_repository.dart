@@ -18,6 +18,14 @@ class ToDoRepository extends BaseToDoRepository {
         .add(toDoCategory.toDocument());
   }
 
+  Future<List<ToDoCategory>> retrieveUserData() async {
+    QuerySnapshot<Map<String, dynamic>> snapshot =
+        await _firebaseFirestore.collection("todos").get();
+    return snapshot.docs
+        .map((docSnapshot) => ToDoCategory.fromSnapShot(docSnapshot))
+        .toList();
+  }
+
   Stream<List<ToDoCategory>> retrieveToDos(User user) {
     final snapsho = _firebaseFirestore
         .collection("Users")
