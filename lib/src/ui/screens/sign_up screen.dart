@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -36,12 +37,12 @@ class SignUpScreen extends HookWidget {
               ),
               ThirdPartySignInButton(
                 onTap: () {
-                  context.read<AuthBloc>().add(AuthEventGoogleSignin());
+                  context.read<AuthBloc>().add(const AuthEventGoogleSignin());
                 },
                 assetLink: 'images/google-logo.png',
                 dark: dark,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               InPutField(
@@ -50,7 +51,7 @@ class SignUpScreen extends HookWidget {
                 password: false,
                 hint: 'enter your email',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InPutField(
@@ -59,7 +60,7 @@ class SignUpScreen extends HookWidget {
                 password: true,
                 hint: 'enter your password',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -70,7 +71,7 @@ class SignUpScreen extends HookWidget {
                       borderRadius: BorderRadius.circular(10.0),
                       color: dark ? containerColor : Colors.white),
                   child: TextButton(
-                    child: Text('sign up'),
+                    child: const Text('sign up'),
                     onPressed: (() {
                       context.read<AuthBloc>().add(AuthEventEmailRegister(
                           email: emailController.text,
@@ -79,14 +80,14 @@ class SignUpScreen extends HookWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               AlreadyAccountWidget(
                 primaryText: 'Already have an Account?',
                 secondaryText: 'Login here',
                 onTap: () {
-                  context.read<AuthBloc>().add(AuthEventGotoLogin());
+                  context.read<AuthBloc>().add(const AuthEventGotoLogin());
                 },
                 dark: dark,
               )

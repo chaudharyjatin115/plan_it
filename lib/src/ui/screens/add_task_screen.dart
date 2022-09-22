@@ -32,7 +32,7 @@ class AddTaskScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(width: 2.0, color: textColor),
                     shape: BoxShape.circle),
-                child: Icon(
+                child: const Icon(
                   CupertinoIcons.xmark,
                   size: 40,
                   semanticLabel: 'cancel',
@@ -52,7 +52,7 @@ class AddTaskScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 30.0),
                 child: Container(
                   alignment: Alignment.centerLeft,
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Enter new task',
@@ -64,7 +64,7 @@ class AddTaskScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -82,11 +82,11 @@ class AddTaskScreen extends StatelessWidget {
                             color: Theme.of(context).iconTheme.color,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Container(
-                          child: Text('Today'),
+                          child: const Text('Today'),
                         )
                       ]),
                       decoration: BoxDecoration(
@@ -94,7 +94,7 @@ class AddTaskScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
 
@@ -102,7 +102,7 @@ class AddTaskScreen extends StatelessWidget {
                     Container(
                       height: 30,
                       child: IconButton(
-                        icon: Icon(Icons.select_all),
+                        icon: const Icon(Icons.select_all),
                         onPressed: () {
                           MaterialPicker(
                             pickerColor: Colors.red, //default color

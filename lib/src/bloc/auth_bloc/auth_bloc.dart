@@ -9,9 +9,9 @@ import 'package:plan_it/src/bloc/auth_bloc/auth_state.dart';
 import '../../services/auth_services/auth_error.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthStateLoggedOut(isLoading: false)) {
+  AuthBloc() : super(const AuthStateLoggedOut(isLoading: false)) {
     on<AuthEventEmailLogin>((event, emit) async {
-      AuthStateLoggedOut(isLoading: false);
+      const AuthStateLoggedOut(isLoading: false);
       final email = event.email;
       final password = event.password;
       try {
@@ -25,7 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
     on<AuthEventEmailRegister>((event, emit) async {
-      emit(AuthStateIsInRegistrationView(isLoading: false));
+      emit(const AuthStateIsInRegistrationView(isLoading: false));
       final email = event.email;
       final password = event.password;
       try {
@@ -40,18 +40,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
     on<AuthEventLogout>(((event, emit) async {
       await FirebaseAuth.instance.signOut();
-      emit(AuthStateLoggedOut(isLoading: false));
+      emit(const AuthStateLoggedOut(isLoading: false));
     }));
     on<AuthEventGotoRegistration>(
       (event, emit) => emit(
-        AuthStateIsInRegistrationView(isLoading: false),
+        const AuthStateIsInRegistrationView(isLoading: false),
       ),
     );
     on<AuthEventIsInLogin>((event, emit) {
-      emit(AuthStateIsInLogin(isLoading: false));
+      emit(const AuthStateIsInLogin(isLoading: false));
     });
     on<AuthEventGoogleSignin>((event, emit) async {
-      emit(AuthStateLoggedOut(isLoading: false));
+      emit(const AuthStateLoggedOut(isLoading: false));
       try {
         final GoogleSignIn googleSignIn = GoogleSignIn();
         final GoogleSignInAccount? googleSignInAccount =
@@ -75,14 +75,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEventInitialize>((event, emit) {
       final user = FirebaseAuth.instance.currentUser;
       if (user == null) {
-        emit(AuthStateLoggedOut(isLoading: false));
+        emit(const AuthStateLoggedOut(isLoading: false));
       } else {
         emit(AuthStateLoggedIn(user: user, isLoading: false));
       }
     });
     on<AuthEventIsInAddTaskScreen>(
       (event, emit) {
-        emit(AuthStateIsInAddTaskScreen(isLoading: false));
+        emit(const AuthStateIsInAddTaskScreen(isLoading: false));
       },
     );
   }

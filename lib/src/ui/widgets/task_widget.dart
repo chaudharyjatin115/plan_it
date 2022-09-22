@@ -26,22 +26,22 @@ class TaskWidget extends StatelessWidget {
                   width: 270,
                   decoration: BoxDecoration(
                     color: dark ? containerColor : Colors.white,
-                    boxShadow: [],
+                    boxShadow: const [],
                     borderRadius: BorderRadius.circular(25.0),
                   ),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Checkbox(
                           checkColor: containerColor,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
                           value: listTodo[index].isDone,
                           onChanged: ((value) {})),
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                       ),
                       Text(
@@ -59,7 +59,7 @@ class TaskWidget extends StatelessWidget {
           );
         } else {
           return Container(
-            child: CircularProgressIndicator(),
+            child: const CircularProgressIndicator(),
           );
         }
       },

@@ -15,29 +15,27 @@ class MyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Container(
-              child: BlocBuilder<ToDoBloc, ToDoState>(
-                builder: (context, state) {
-                  if (state is LoadedToDoState) {
-                    if (state.todos.isEmpty) {
-                      return Container(
-                        child: Text('No to dos'),
-                      );
-                    } else
-                      return ListView.builder(
-                          itemCount: state.todos.length,
-                          itemBuilder: ((context, index) {
-                            return Container(
-                              color: Colors.black,
-                              child: Text(state.todos[index].name),
-                            );
-                          }));
-                  } else {
-                    return Container();
+            child: BlocBuilder<ToDoBloc, ToDoState>(
+              builder: (context, state) {
+                if (state is LoadedToDoState) {
+                  if (state.todos.isEmpty) {
+                    return Container(
+                      child: const Text('No to dos'),
+                    );
                   }
-                  ;
-                },
-              ),
+                  return ListView.builder(
+                      itemCount: state.todos.length,
+                      itemBuilder: ((context, index) {
+                        return Container(
+                          color: Colors.black,
+                          child: Text(state.todos[index].name),
+                        );
+                      }));
+                } else {
+                  return Container();
+                }
+                ;
+              },
             ),
           ),
           TextButton(
@@ -45,7 +43,7 @@ class MyWidget extends StatelessWidget {
                 context.read<ToDoBloc>().add(AddToDoCategoryEvent(ToDoCategory(
                     color: 'red', name: 'buisness', length: 45, toDoList: [])));
               },
-              child: Text('add'))
+              child: const Text('add'))
         ],
       ),
     );

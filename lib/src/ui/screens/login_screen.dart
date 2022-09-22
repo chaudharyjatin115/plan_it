@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -38,12 +36,12 @@ class LoginScreen extends HookWidget {
               ),
               ThirdPartySignInButton(
                 onTap: () {
-                  context.read<AuthBloc>().add(AuthEventGoogleSignin());
+                  context.read<AuthBloc>().add(const AuthEventGoogleSignin());
                 },
                 assetLink: 'images/google-logo.png',
                 dark: dark,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               InPutField(
@@ -52,7 +50,7 @@ class LoginScreen extends HookWidget {
                 password: false,
                 hint: 'enter your email',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InPutField(
@@ -61,7 +59,7 @@ class LoginScreen extends HookWidget {
                 password: true,
                 hint: 'enter your password',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -84,14 +82,16 @@ class LoginScreen extends HookWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               AlreadyAccountWidget(
                 primaryText: 'New here?',
                 secondaryText: 'sign up here',
                 onTap: () {
-                  context.read<AuthBloc>().add(AuthEventGotoRegistration());
+                  context
+                      .read<AuthBloc>()
+                      .add(const AuthEventGotoRegistration());
                 },
                 dark: dark,
               )

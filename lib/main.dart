@@ -27,11 +27,11 @@ import 'src/bloc/auth_bloc/auth_event.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent // transparent status bar
       ));
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -67,15 +67,15 @@ class _MyAppState extends State<MyApp> {
             BlocConsumer<AuthBloc, AuthState>(
           builder: (((context, state) {
             if (state is AuthStateLoggedIn) {
-              return MyWidget();
+              return const MyWidget();
             } else if (state is AuthStateLoggedOut) {
-              return LoginScreen();
+              return const LoginScreen();
             } else if (state is AuthStateIsInRegistrationView) {
-              return SignUpScreen();
+              return const SignUpScreen();
             } else if (state is AuthStateIsInLogin) {
-              return LoginScreen();
+              return const LoginScreen();
             } else if (state is AuthStateIsInAddTaskScreen) {
-              return AddTaskScreen();
+              return const AddTaskScreen();
             } else {
               return Container();
             }

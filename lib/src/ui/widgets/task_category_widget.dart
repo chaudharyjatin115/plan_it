@@ -16,7 +16,7 @@ class ToDoCategoryWidget extends StatelessWidget {
     final dark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return CustomScrollView(slivers: [
       SliverToBoxAdapter(
-        child: Container(
+        child: SizedBox(
           height: 130,
           width: MediaQuery.of(context).size.width.toDouble(),
           child:
@@ -26,8 +26,8 @@ class ToDoCategoryWidget extends StatelessWidget {
             child: BlocBuilder<ToDoBloc, ToDoState>(builder: (context, state) {
               if (state is LoadedToDoState) {
                 if (state.todos.isEmpty) {
-                  return SliverToBoxAdapter(
-                    child: Container(
+                  return const SliverToBoxAdapter(
+                    child: SizedBox(
                       height: 30,
                       child: Text('No ToDos'),
                     ),
@@ -46,8 +46,8 @@ class ToDoCategoryWidget extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 20),
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 20),
                                     child: Text(
                                       '56',
                                       // '67',
@@ -58,24 +58,24 @@ class ToDoCategoryWidget extends StatelessWidget {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 15,
                                   ),
                                   Container(
-                                    padding: EdgeInsets.only(left: 20),
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Text(
                                       state.todos[index].name,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 15,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20, right: 20),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 20, right: 20),
                                     child: LinearProgressIndicator(
                                       color: Colors.black,
                                       value: 45,
@@ -96,7 +96,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                                   spreadRadius: 3.0,
                                   //
                                   blurRadius: 6,
-                                  offset: Offset(
+                                  offset: const Offset(
                                       0, 4), // changes position of shadow
                                 ),
                               ],
@@ -111,7 +111,7 @@ class ToDoCategoryWidget extends StatelessWidget {
                   );
                 }
               } else if (state is LoadingToDoState) {
-                return Container(
+                return const SizedBox(
                   height: 40,
                   child: CircularProgressIndicator.adaptive(),
                 );

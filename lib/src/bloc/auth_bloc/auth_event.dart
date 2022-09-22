@@ -8,39 +8,40 @@ abstract class AuthEvent {}
 class AuthEventEmailLogin implements AuthEvent {
   final String email;
   final String password;
-  AuthEventEmailLogin({required this.email, required this.password});
+  const AuthEventEmailLogin({required this.email, required this.password});
 }
 
 @immutable
 class AuthEventEmailRegister implements AuthEvent {
   final String email;
   final String password;
-  AuthEventEmailRegister({required this.email, required this.password});
+  const AuthEventEmailRegister({required this.email, required this.password});
 }
 
 @immutable
 class AuthEventLogout implements AuthEvent {
-  AuthEventLogout();
+  const AuthEventLogout();
 }
 
 @immutable
 class AuthEventGotoLogin implements AuthEvent {
-  AuthEventGotoLogin();
+  const AuthEventGotoLogin();
 }
 
 @immutable
 class AuthEventGotoRegistration implements AuthEvent {
-  AuthEventGotoRegistration();
+  const AuthEventGotoRegistration();
 }
 
 @immutable
 class AuthEventGoogleSignin implements AuthEvent {
-  AuthEventGoogleSignin();
+  const AuthEventGoogleSignin();
 }
 
 class AuthEventDeleteAccount implements AuthEvent {}
 
 class AuthEventIsInLogin implements AuthEvent {}
+
 class AuthEventInitialize implements AuthEvent {}
 
 class AuthEventIsInAddTaskScreen implements AuthEvent {}

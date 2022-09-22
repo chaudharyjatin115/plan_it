@@ -17,33 +17,31 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           backgroundColor: Theme.of(context).primaryColor,
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: ((context) => AddTaskScreen()),
+                builder: ((context) => const AddTaskScreen()),
               ),
             );
           },
-          child: Icon(Icons.add),
-        )
-    
-        ,
+          child: const Icon(Icons.add),
+        ),
         body: CustomScrollView(
           slivers: [
-            CustomAppBar(),
-            TextHeaderWidget(),
-            SliverToBoxAdapter(
+            const CustomAppBar(),
+            const TextHeaderWidget(),
+            const SliverToBoxAdapter(
                 child: SizedBox(
               height: 30,
             )),
-            ToDoCategoryWidget(),
+            const ToDoCategoryWidget(),
             SliverToBoxAdapter(
               child: Container(height: 40),
             ),
-            TaskWidget(),
+            const TaskWidget(),
           ],
         ));
   }
@@ -62,7 +60,7 @@ class TextHeaderWidget extends StatelessWidget {
         child: Container(
             height: 60,
             width: 100,
-            child: Text(
+            child: const Text(
               'Whats`up, Olivia',
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
             )),

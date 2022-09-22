@@ -9,14 +9,15 @@ abstract class AuthState {
   final bool isLoading;
   final AuthError? authError;
   final User? user;
-  AuthState({required this.isLoading, this.authError, this.user});
+  const AuthState({required this.isLoading, this.authError, this.user});
 }
 
 class AuthStateLoggedIn extends AuthState {
+  @override
   final User user;
   // final List<ToDoCategory> toDoCategory;
 
-  AuthStateLoggedIn({
+  const AuthStateLoggedIn({
     required this.user,
     required bool isLoading,
     AuthError? authError,
@@ -25,20 +26,22 @@ class AuthStateLoggedIn extends AuthState {
 }
 
 class AuthStateLoggedOut extends AuthState {
-  AuthStateLoggedOut({required bool isLoading, AuthError? authError})
+  const AuthStateLoggedOut({required bool isLoading, AuthError? authError})
       : super(isLoading: isLoading, authError: authError);
 }
 
 class AuthStateIsInRegistrationView extends AuthState {
-  AuthStateIsInRegistrationView({required bool isLoading, AuthError? authError})
+  const AuthStateIsInRegistrationView(
+      {required bool isLoading, AuthError? authError})
       : super(isLoading: isLoading, authError: authError);
 }
 
 class AuthStateIsInLogin extends AuthState {
-  AuthStateIsInLogin({required bool isLoading}) : super(isLoading: isLoading);
+  const AuthStateIsInLogin({required bool isLoading})
+      : super(isLoading: isLoading);
 }
 
 class AuthStateIsInAddTaskScreen extends AuthState {
-  AuthStateIsInAddTaskScreen({required bool isLoading})
+  const AuthStateIsInAddTaskScreen({required bool isLoading})
       : super(isLoading: isLoading);
 }
