@@ -25,3 +25,5 @@ class ToDoInitial extends ToDoState {}
 class ToDoCategoryAddedState extends ToDoState {}
 
 class ShowColorPickerState extends ToDoState {}
+
+class AddedToDoState extends ToDoState {}

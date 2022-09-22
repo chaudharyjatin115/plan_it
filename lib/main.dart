@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +18,7 @@ import 'package:plan_it/src/ui/screens/home_screen.dart';
 import 'package:plan_it/src/ui/screens/loading/loading_screen.dart';
 import 'package:plan_it/src/ui/screens/login_screen.dart';
 import 'package:plan_it/src/ui/screens/sign_up%20screen.dart';
+import 'package:plan_it/src/ui/screens/test_screen.dart';
 
 import 'package:plan_it/src/ui/themes/theme.dart';
 
@@ -24,7 +26,7 @@ import 'src/bloc/auth_bloc/auth_event.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent // transparent status bar
@@ -42,6 +44,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    final User user = FirebaseAuth.instance.currentUser!;
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark,
     );
@@ -50,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(
           create: (context) =>
-              ToDoBloc(ToDoRepository())..add(ToDoCategoryLoadEvent()),
+              ToDoBloc(ToDoRepository(), user)..add(ToDoCategoryLoadEvent()),
         ),
         BlocProvider(
             create: (context) => AuthBloc()..add(AuthEventInitialize())),
@@ -64,7 +67,7 @@ class _MyAppState extends State<MyApp> {
             BlocConsumer<AuthBloc, AuthState>(
           builder: (((context, state) {
             if (state is AuthStateLoggedIn) {
-              return HomeScreen();
+              return MyWidget();
             } else if (state is AuthStateLoggedOut) {
               return LoginScreen();
             } else if (state is AuthStateIsInRegistrationView) {

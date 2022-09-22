@@ -8,15 +8,17 @@ import 'package:plan_it/src/models/to_do_category_model.dart';
 
 class ToDoBloc extends Bloc<ToDoCategoryEvent, ToDoState> {
   final ToDoRepository todorep;
-  ToDoBloc(this.todorep) : super(LoadingToDoState()) {
+  final User user;
+  ToDoBloc(this.todorep, this.user) : super(LoadingToDoState()) {
     on((event, emit) async {
-      List<ToDoCategory> todoslist = await todorep.retrieveUserData();
+      final User user = FirebaseAuth.instance.currentUser!;
+      List<ToDoCategory> todoslist = await todorep.retrieveUserData(user);
       emit(LoadedToDoState(todos: todoslist));
     });
 
     on<AddToDoCategoryEvent>((event, emit) {
       if (event.toDoCategory == null) {
-        ToDoRepository().addToDoCategory(event.toDoCategory);
+        ToDoRepository().addToDoCategory(event.toDoCategory, user);
         emit(ToDoCategoryAddedState());
       }
     });
