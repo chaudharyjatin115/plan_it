@@ -26,7 +26,7 @@ import 'src/bloc/auth_bloc/auth_event.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent // transparent status bar
@@ -44,7 +44,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    final User user = FirebaseAuth.instance.currentUser!;
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.dark,
     );
@@ -53,7 +52,8 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(
           create: (context) =>
-              ToDoBloc(ToDoRepository(), user)..add(ToDoCategoryLoadEvent()),
+              ToDoBloc(ToDoRepository(), FirebaseAuth.instance.currentUser!)
+                ..add(ToDoCategoryLoadEvent()),
         ),
         BlocProvider(
             create: (context) => AuthBloc()..add(AuthEventInitialize())),
